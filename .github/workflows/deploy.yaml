@@ -4,9 +4,15 @@ on:
     branches:
       - main
 jobs:
-  deploy_source:
-    name: deploy lambda by push
+  deploy:
     runs-on: ubuntu-latest
+    
+    env:
+      REPOSITORY_NAME: aws-lambda
+      REGION: ap-northeast-2
+      ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+      BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -21,7 +27,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ap-northeast-2
           function_name: lambda_function
           memory_size: 1000
           timeout: 300
