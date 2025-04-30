@@ -11,7 +11,6 @@ jobs:
       REPOSITORY_NAME: aws-lambda
       REGION: ap-northeast-2
       ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-      BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
 
     steps:
       - name: checkout
