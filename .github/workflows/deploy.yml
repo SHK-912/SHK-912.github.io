@@ -31,4 +31,4 @@ jobs:
         run: |
           pip3 install awscli
           zip -r9 package.zip *
-          aws lambda update-function-code --function-name $DEV_FUNC_NM --zip-file fileb://package.zip
+          aws lambda update-function-code --function-name DEV_FUNC_NM --zip-file fileb://package.zip --publish
