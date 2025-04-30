@@ -25,12 +25,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          
-      - name: install node_modules
-        run: npm install
         
-      - name: zip Lambda Function
-        run: zip -r9 lambda_function.zip *
-        
-      - name: update code
-        run: aws lambda update-function-code --function-name lambda_function --zip-file fileb://lambda_function.zip
+      - name: zip Lambda Function Build & Update
+        run: |
+          pip3 install awscli
+          zip -r9 package.zip *
+          aws lambda update-function-code --function-name ${{ secrets.LAMBDA_NAME }} --zip-file fileb://package.zip
