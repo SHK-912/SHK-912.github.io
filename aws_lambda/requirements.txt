@@ -1,2 +1,3 @@
 # 설치 필요 library 작성
 boto3
+pandas
